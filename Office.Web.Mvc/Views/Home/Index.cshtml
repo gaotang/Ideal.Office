@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>
+            <button>普通的Excel导出</button>
+<pre class="syntax brush-csharp">
+    public ActionResult Syntaxhighlighter() {
+        return new ExportExcelResult("template1", "test1");
+    }
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button>带参数的Excel导出</button>
+<pre class="syntax brush-csharp">
+
+</pre>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button>带参数和常量的Excel导出</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button>带参数和常量和动态列的Excel导出</button>
+        </td>
+    </tr>
+</table>
+
+@section scripts{
+
+    <link type="text/css" rel="stylesheet" href="~/Content/index.css" />
+    <script src="~/Scripts/syntax/jquery.syntax.js" type="text/javascript"></script>
+    <script src="~/Scripts/syntax/jquery.syntax.cache.js" type="text/javascript"></script>
+    @*<script src="~/Scripts/syntax/jquery.syntax.brush.xml.js" type="text/javascript"></script>*@
+
+    <script type="text/javascript">
+        $(function () {
+            jQuery.syntax();
+        });
+    </script>
+
+    <script type="text/javascript">
+
+    $(function () {
+
+        $("button").click(function () {
+
+            var index = $(this).index();
+            if (index == 0) {
+                window.location = '@Url.Action("EasyExport")';
+                } else if (index == 1) {
+                    window.location = '@Url.Action("EasyExportParam")';
+                } else if (index == 2) {
+                    window.location = '@Url.Action("ExportSplit")';
+                }
+
+            });
+
+        });
+
+    </script>
+}

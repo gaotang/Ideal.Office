@@ -1,0 +1,30 @@
+﻿<Columns key="col1">
+    <!--表头字段-->
+    <Column Rows="2" Cols="2" IsPrimaryKey="1" Property="OrderNO" ColumnName="AAA" Required="1" DataType="string" Comment="编号只能由字母或数字组成。" MaxLen="40"></Column>
+    <!--<Column Rows="1" Cols="1" Property="OrderDate" ColumnName="BBB" Required="1" DataType="date" DefValue="$F{SysDate}" Comment="日期格式为YYYY-MM-DD，如果不录入则取系统当前日期。"></Column>-->
+    <Column Rows="1" Cols="1" Property="CustomerID" ColumnName="CCC" Required="1" DataType="ref" RefConfig="CustomerID;t_Customer;CustomerName;IsUsed=1"></Column>
+
+    <!--表体字段-->
+    <!--<Column Rows="1" Cols="1" IsEntry="1" Property="InvID" ColumnName="DDD" Required="1" DataType="ref" DefValue="InvID;t_Inventory;InvName;"></Column>-->
+    <Column Rows="1" Cols="2" IsEntry="1" Property="Qty" ColumnName="数量" Required="1" DataType="decimal" ></Column>
+    <Column Rows="2" Cols="1" IsEntry="1" Property="Price" ColumnName="单价" Required="1" DataType="decimal" DefValue="$E{InvID.StandardPrice}"></Column>
+    <Column Rows="1" Cols="1" IsEntry="1" Property="Discount" ColumnName="折扣率(%)" DataType="decimal" Min="0" Max="100" DefValue="$C{0}" Comment="请输入0-100之前的数字。"></Column>
+
+    <!--制单人不用在导入模板中显示，但数据库中要求有值，所以没有设置ColumnName属性，只设置了默认值-->
+    <Column Rows="1" Cols="1" Property="CreateUser" DefValue="$F{UserNO}" ></Column>
+</Columns>
+<Columns key="col2">
+    <!--表头字段-->
+    <!--<Column Rows="1" Cols="1" IsPrimaryKey="1" Property="OrderNO" ColumnName="订单编号" Required="1" DataType="string" Comment="编号只能由字母或数字组成。" MaxLen="40"></Column>-->
+    <Column Rows="1" Cols="2" Property="OrderDate" ColumnName="订单日期" Required="1" DataType="date" DefValue="$F{SysDate}" Comment="日期格式为YYYY-MM-DD，如果不录入则取系统当前日期。"></Column>
+    <!--<Column Rows="1" Cols="1" Property="CustomerID" ColumnName="客户名称" Required="1" DataType="ref" RefConfig="CustomerID;t_Customer;CustomerName;IsUsed=1"></Column>-->
+
+    <!--表体字段-->
+    <Column Rows="1" Cols="1" IsEntry="1" Property="InvID" ColumnName="商品名称" Required="1" DataType="ref" DefValue="InvID;t_Inventory;InvName;"></Column>
+    <Column Rows="1" Cols="1" IsEntry="1" Property="Qty" ColumnName="数量" Required="1" DataType="decimal" ></Column>
+    <!--<Column Rows="1" Cols="1" IsEntry="1" Property="Price" ColumnName="单价" Required="1" DataType="decimal" DefValue="$E{InvID.StandardPrice}"></Column>-->
+    <Column Rows="1" Cols="1" IsEntry="1" Property="Discount" ColumnName="折扣率(%)" DataType="decimal" Min="0" Max="100" DefValue="$C{0}" Comment="请输入0-100之前的数字。"></Column>
+
+    <!--制单人不用在导入模板中显示，但数据库中要求有值，所以没有设置ColumnName属性，只设置了默认值-->
+    <Column Rows="1" Cols="1" Property="CreateUser" DefValue="$F{UserNO}" ></Column>
+</Columns>
