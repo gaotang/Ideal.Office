@@ -6,7 +6,7 @@
 <table>
     <tr>
         <td>
-            <button>普通的Excel导出</button>
+            <button index="0">普通的Excel导出</button>
 <pre class="syntax brush-csharp">
     public ActionResult Syntaxhighlighter() {
         return new ExportExcelResult("template1", "test1");
@@ -16,21 +16,27 @@
     </tr>
     <tr>
         <td>
-            <button>带参数的Excel导出</button>
-<pre class="syntax brush-csharp">
-
-</pre>
-            
+            <button index="1">带参数的Excel导出</button>
         </td>
     </tr>
     <tr>
         <td>
-            <button>带参数和常量的Excel导出</button>
+            <button index="2">带常量的Excel导出</button>
         </td>
     </tr>
     <tr>
         <td>
-            <button>带参数和常量和动态列的Excel导出</button>
+            <button index="3">带动态列的Excel导出</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button index="4">带参数和动态列的Excel导出</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button index="5">带参数和常量和动态列的Excel导出</button>
         </td>
     </tr>
 </table>
@@ -50,16 +56,22 @@
 
     <script type="text/javascript">
 
-    $(function () {
+        $(function () {
 
-        $("button").click(function () {
+            $("button").click(function () {
 
-            var index = $(this).index();
-            if (index == 0) {
-                window.location = '@Url.Action("EasyExport")';
+                var index = $(this).attr("index");
+                if (index == 0) {
+                    window.location = '@Url.Action("EasyExport")';
                 } else if (index == 1) {
                     window.location = '@Url.Action("EasyExportParam")';
                 } else if (index == 2) {
+                    window.location = '@Url.Action("EasyExportConst")';
+                } else if (index == 3) {
+                    window.location = '@Url.Action("EasyExportAutoCol")';
+                } else if (index == 4) {
+                    window.location = '@Url.Action("EasyExportAutoColAndParam")';
+                } else if (index == 5) {
                     window.location = '@Url.Action("ExportSplit")';
                 }
 

@@ -21,15 +21,35 @@ namespace Office.Web.Mvc.Controllers
             return new ExportExcelResult("template1", "EasyExport");
         }
 
-        public ActionResult EasyExportParam()
+        public ActionResult EasyExportConst()
         {
-            return new ExportExcelResult("template2", "EasyExportParam"
+            return new ExportExcelResult("template4", "EasyExportConst"
                 , new Dictionary<string, string>() { 
                      { "@DateNow", DateTime.Now.ToString() }
                     ,{ "@Month", DateTime.Now.Month.ToString() }
-                }
+                });
+        }
+
+        public ActionResult EasyExportParam()
+        {
+            return new ExportExcelResult("template5", "EasyExportParam"
                 , new Dictionary<string, object>() { 
-                    { "@ID", "006" }
+                     { "@p1", 80 }
+                });
+        }
+
+        public ActionResult EasyExportAutoCol()
+        {
+            return new ExportExcelResult("template5", "EasyExportAutoCol");
+        }
+
+        public ActionResult EasyExportAutoColAndParam()
+        {
+            return new ExportExcelResult("template6"
+                , "EasyExportAutoColAndParam"
+                , null
+                , new Dictionary<string, object>() { 
+                     { "@p1", "006" }
                 });
         }
 
