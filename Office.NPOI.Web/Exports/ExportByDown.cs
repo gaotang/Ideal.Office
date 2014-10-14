@@ -218,7 +218,8 @@
                                                     currentText = cell.StringCellValue.Trim();
                                                     if (mColKey > 0)
                                                     {
-                                                        currentKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).StringCellValue;
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        currentKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
                                                     }
                                                     firstCell = cell;
                                                     currentIndex = 1;
@@ -231,7 +232,8 @@
                                                     currentText = cell.StringCellValue.Trim();
                                                     if (mColKey > 0)
                                                     {
-                                                        currentKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).StringCellValue;
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        currentKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
                                                     }
                                                     currentIndex = 1;
                                                 }
@@ -239,7 +241,9 @@
                                                 {
                                                     if (mColKey > 0)
                                                     {
-                                                        var tempKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).StringCellValue;
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        var tempKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
+                                                        
                                                         if (currentKeyText != tempKeyText)
                                                         {
                                                             poi.AddMergedRegion(firstCell, currentIndex);
@@ -266,7 +270,8 @@
                                                     currentText = cell.NumericCellValue.ToString().Trim();
                                                     if (mColKey > 0)
                                                     {
-                                                        currentKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).NumericCellValue.ToString();
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        currentKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
                                                     }
                                                     firstCell = cell;
                                                     currentIndex = 1;
@@ -279,7 +284,8 @@
                                                     currentText = cell.NumericCellValue.ToString().Trim();
                                                     if (mColKey > 0)
                                                     {
-                                                        currentKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).NumericCellValue.ToString();
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        currentKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
                                                     }
                                                     currentIndex = 1;
                                                 }
@@ -287,7 +293,9 @@
                                                 {
                                                     if (mColKey > 0)
                                                     {
-                                                        var tempKeyText = sht.GetRow(rowIndex).GetCell(mColKey - 1).NumericCellValue.ToString();
+                                                        var currentKey = poi.GetRow(rowIndex).GetCell(mColKey - 1);
+                                                        var tempKeyText = currentKey.CellType == CellType.Numeric ? currentKey.NumericCellValue.ToString().Trim() : currentKey.StringCellValue;
+                    
                                                         if (currentKeyText != tempKeyText)
                                                         {
                                                             poi.AddMergedRegion(firstCell, currentIndex);
@@ -350,7 +358,8 @@
                         continue;
                     }
 
-                    var cell = sht.GetRow(rowIndex).GetCell(colIndex);
+                    //var cell = sht.GetRow(rowIndex).GetCell(colIndex);
+                    var cell = poi.GetRow(rowIndex).GetCell(colIndex);
                     if (cell != null)
                     {
                         var cellText = poi.GetCellStrText(cell);
@@ -364,6 +373,7 @@
                                     {
                                         if (cellText.Contains(item.Name))
                                         {
+                                            cellText = poi.GetCellStrText(cell);
                                             var newValue = cellText.Replace(item.Name, const1.Value);
                                             cell.SetCellValue(newValue);
                                         }
