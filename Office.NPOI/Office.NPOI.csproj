@@ -59,10 +59,13 @@
     <Compile Include="Excel2003\Excel2003ByInit.cs" />
     <Compile Include="Excel2003\Excel2003ByPrint.cs" />
     <Compile Include="Excel2003\Excel2003ByShape.cs" />
+    <Compile Include="Excel2007\Excel2007ByContent.cs" />
+    <Compile Include="Excel2007\Excel2007ByInit.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StructExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
