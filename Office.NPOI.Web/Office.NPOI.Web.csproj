@@ -69,6 +69,7 @@
     <Compile Include="Exports\ExportByHtml.cs" />
     <Compile Include="Extensions\ExcelEntityExtensions.cs" />
     <Compile Include="Extensions\ResponseExtensions.cs" />
+    <Compile Include="Imports\ImportBase.cs" />
     <Compile Include="Imports\ImportByExcel.cs" />
     <Compile Include="Imports\ImportByXml.cs" />
     <Compile Include="Models\ConstFlag.cs" />
